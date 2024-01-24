@@ -417,7 +417,12 @@ def cmd_2_image (app, plot):
     hashkey = sha(hashkey.encode('utf-8')).hexdigest()
     outfname = '%s-%s.%s' %(args[0], hashkey, plot_format)
     rel_imgpath = relative_uri(app.builder.env.docname, app.builder.imagedir)
-    out = dict(outrelfn = posixpath.join(rel_imgpath, outfname),
+    # This was changed by @gucio321.
+    # I don't know why but it caused a strange bug about latex.
+    # Especially when document embeding plots was not in main root
+    # filepath in latex was set to ../gnuplot-XXX.pdf what caused latexmk crash
+    # out = dict(outrelfn = posixpath.join(rel_imgpath, outfname),
+    out = dict(outrelfn = outfname,
         outfullfn = path.join(app.builder.outdir, app.builder.imagedir, outfname),
         outreference = None)
     if not path.isfile(out["outfullfn"]):
