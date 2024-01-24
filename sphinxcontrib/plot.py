@@ -201,7 +201,9 @@ def plot_image (app, plot):
     currpath = os.getcwd() # Record the current dir and return here afterwards
     plot_format = options.get("plot_format", None) # plot_format option must be set before.
     outfname = '%s-%s.%s' %(args[0], hashkey, plot_format)
-    out = dict(outrelfn = posixpath.join(rel_imgpath, outfname),
+    # same as in the other place - for latex this path is invalid
+    # out = dict(outrelfn = posixpath.join(rel_imgpath, outfname),
+    out = dict(outrelfn = outfname if app.builder.format == "latex" else posixpath.join(rel_imgpath, outfname),
         outfullfn = path.join(app.builder.outdir, app.builder.imagedir, outfname),
         outreference = None)
 
@@ -422,7 +424,7 @@ def cmd_2_image (app, plot):
     # Especially when document embeding plots was not in main root
     # filepath in latex was set to ../gnuplot-XXX.pdf what caused latexmk crash
     # out = dict(outrelfn = posixpath.join(rel_imgpath, outfname),
-    out = dict(outrelfn = outfname,
+    out = dict(outrelfn = outfname if app.builder.format == "latex" else posixpath.join(rel_imgpath, outfname),
         outfullfn = path.join(app.builder.outdir, app.builder.imagedir, outfname),
         outreference = None)
     if not path.isfile(out["outfullfn"]):
