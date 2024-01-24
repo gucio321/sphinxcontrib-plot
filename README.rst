@@ -1,3 +1,15 @@
+DISCLAIMER
+**********
+
+I am NOT an author of this project. The source code comes from https://pypi.org/project/sphinxcontrib-plot .
+I re-distribute it under the conditions of (attached) license.
+
+I've forked this for my presonal use as I found a small bug in the main project and due to lack of
+contact possibility I couldn't fix this bug in the main project.
+
+Feel free to use/fork this. I can review potential Pull Requests but I'm not planning to fix any issues 
+as far as they doesn't affect my projects :stuck_out_tongue:
+
 sphinxcontrib-plot
 *********************
 
