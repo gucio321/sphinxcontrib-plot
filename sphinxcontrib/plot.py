@@ -21,7 +21,6 @@ import shutil
 import copy
 from subprocess import Popen, PIPE
 import shlex
-import imghdr
 
 try:
     # Python 2.
